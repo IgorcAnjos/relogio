@@ -1,4 +1,6 @@
-let time
+let timeHora
+let timePomodoro
+let timeCronometro
 
 const componenteHora = document.querySelector('#hora')
 const componentePopupHora = document.querySelector('#wrapper-hora')
@@ -29,7 +31,7 @@ botaoHoraAtual.addEventListener('click', horario = () => {
   componenteHora.innerHTML = `${hora}:${minutos}:${segundos}`
 
   // Configurando loop de atualização de hora
-  time = setTimeout(horario, 1000);
+  timeHora = setTimeout(horario, 1000);
 })
 
 // parandro loop de Hora Atual
@@ -40,7 +42,7 @@ componentePopupHora.addEventListener('click', event => {
   
   if (fechar) {
     componentePopupHora.style.display = 'none'
-    clearTimeout(time)
+    clearTimeout(timeHora)
   }
 })
 
@@ -62,8 +64,10 @@ botaoPomodoro.addEventListener('click', AbrirPopupPomodoro = () => {
 
 // Iniciar Cronometro Pomodoro
 botaoInicioPomodoro.addEventListener('click', relogioPomodoro = () => {
+  
   botaoInicioPomodoro.style.display = 'none'
   botaoPararPomodoro.style.display = 'block'
+
   let cronometroPomodoro = 25 * 60
   let count = 0
   contagem()
@@ -80,16 +84,16 @@ botaoInicioPomodoro.addEventListener('click', relogioPomodoro = () => {
     }
     componentePomoro.innerHTML = `${minutosPomodoro}:${segundosPomodoro}`
     if (cronometroPomodoro >= 1) {
-      time = setTimeout(contagem, 1000)
+      timePomodoro = setTimeout(contagem, 1000)
     } else {
       count++
       if (count % 2 !== 0) { 
-        clearTimeout(time)
+        clearTimeout(timePomodoro)
         cronometroPomodoro = 5 * 60
         alert('Hora do Descanso')
         contagem()
       } else {
-        clearTimeout(time)
+        clearTimeout(timePomodoro)
         cronometroPomodoro = 25 * 60
         alert('Hora do Trabalho')
         contagem()
@@ -102,20 +106,23 @@ botaoInicioPomodoro.addEventListener('click', relogioPomodoro = () => {
 
 // Parar Cronometro Pomodoro
 botaoPararPomodoro.addEventListener('click', parar = () => {
-  clearTimeout(time)
-  componentePomoro.innerHTML = ''
+  clearTimeout(timePomodoro)
   botaoPararPomodoro.style.display = 'none'
   botaoInicioPomodoro.style.display = 'block'
 })
 
 // Fechar Popup Pomodoro
 componentePopupPomodoro.addEventListener('click', event => {
+
   const comandoFechar = event.target.classList[0]
   const listaParaFechar = ['popup-close', 'popup-wrapper']
   const fechar = listaParaFechar.some(listaParaFechar => listaParaFechar === comandoFechar)
   
   if (fechar) {
     componentePopupPomodoro.style.display = 'none'
+    clearTimeout(timePomodoro)
+    botaoPararPomodoro.style.display = 'none'
+    botaoInicioPomodoro.style.display = 'block'
   }
 })
 
@@ -148,10 +155,10 @@ botaoiniciarCronometro.addEventListener('click', cronometrar = () => {
     }
 
     componenteCronometro.innerHTML = `${minutoCronometro}:${segundoCronometro}`
-    time = setTimeout(contagemCronometro, 1000)
+    timeCronometro = setTimeout(contagemCronometro, 1000)
 
     if (cronometro === 0) {
-      clearTimeout(time)
+      clearTimeout(timeCronometro)
       confirm('Acabou!')
     } else {
       cronometro--
@@ -165,7 +172,7 @@ botaoPararCronometro.addEventListener('click', pararIniciarCronometro = () => {
   if (botaoPararCronometro.value === 'Parar') {
     botaoPararCronometro.value = 'Voltar'
     componenteCronometro.innerHTML = ''
-    clearTimeout(time)
+    clearTimeout(timeCronometro)
   } else {
     botaoPararCronometro.value = 'Parar'
     contagemCronometro()
@@ -180,6 +187,6 @@ componentePopupCronometro.addEventListener('click', event => {
   
   if (fechar) {
     componentePopupCronometro.style.display = 'none'
-    clearTimeout(time)
+    clearTimeout(timeCronometro)
   }
 })
