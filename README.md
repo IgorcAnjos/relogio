@@ -11,33 +11,29 @@
 
 ## Learning in JavaScript
 
-`new Date()` : Used to get system hour, minute and second
+`new Date()` : Used to get system hour, minute and second.
 
-`setTimeOut()` : Used to set one function repeat per second, for stopwatches
+`setTimeOut()` : Used to set one function repeat per second, for stopwatches.
 
-`clearTimeOut()` : Used to break the loop set by setTimeout
+`clearTimeOut()` : Used to break the loop set by setTimeout.
 
-`variável.addEventListener()` : Used to bind functions from events bound to HTML components
+`variável.addEventListener()` : Used to bind functions from events bound to HTML components.
 
-`event.target.classList` : Used to identify the exact component where a certain event took place
+`event.target.classList` : Used to identify the exact component where a certain event took place.
 
-`lista.some()` : Used to compare items in a list with the event identified by event.target.classList and validate a conditional
+`lista.some()` : Used to compare items in a list with the event identified by event.target.classList and validate a conditional.
 
-`componenteHTML.style.display` : Used to dynamically change the display state of an HTML component (Popups, Buttons)
+`componenteHTML.style.display` : Used to dynamically change the display state of an HTML component (Popups, Buttons).
 
-`() => {}` : Used to define a function directly inside an .addEventListener()
+`() => {}` : Used to define a function directly inside an .addEventListener().
 
 ## Learning in CSS
 
-`max-width` :
+`max-width` : Used to delimit the maximum window size.
 
-`position:;` :
+`top:;` : Used to delimit top position.
 
-`top:;` :
-
-`fixed:;` :
-
-`tranform:;` :
+`tranform:;` : turn position in all directions
 
 `transform: translateY();` :
 

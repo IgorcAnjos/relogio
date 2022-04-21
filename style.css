@@ -60,9 +60,10 @@ section:hover {
 input {
   text-align:center;
   border: none;
-  width: 30%;
+  width: 100%;
   max-width: 100px;
-  height: 22px;
+  height:3cm;
+  max-height: 40px;
   margin: 5px;
   color: white;
   border-radius: 2px;
